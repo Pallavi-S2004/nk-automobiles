@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@/lib/generated/prisma";
 
 const prisma = new PrismaClient();
+
 
 export async function POST(req: Request) {
   try {
@@ -16,11 +18,12 @@ export async function POST(req: Request) {
       { success: true, contact },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Error saving contact:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to save message" },
-      { status: 500 }
-    );
-  }
+  } catch (error: any) {
+  console.error("Error saving contact:", error);
+  return NextResponse.json(
+    { success: false, error: error.message || "Failed to save message" },
+    { status: 500 }
+  );
+}
+
 }

@@ -1,19 +1,10 @@
 // lib/data.ts
 export const brands = [
-  {
-    id: 1,
-    name: "Toyota",
-    products: [
-      { id: 1, name: "Brake Pads", price: 2500, imageUrl: "/toyota-brake.jpg" },
-      { id: 2, name: "Clutch Plate", price: 4200, imageUrl: "/toyota-clutch.jpg" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Honda",
-    products: [
-      { id: 3, name: "Engine Oil", price: 1200, imageUrl: "/honda-oil.jpg" },
-      { id: 4, name: "Air Filter", price: 800, imageUrl: "/honda-filter.jpg" },
-    ],
-  },
+  { id: 1, name: "Maruti Suzuki", products: [] },
+  { id: 2, name: "Hyundai", products: [] },
+  { id: 3, name: "Toyota", products: [] },
+  { id: 4, name: "Benz", products: [] },
+  { id: 5, name: "BMW", products: [] },
+  { id: 6, name: "Audi", products: [] },
+  { id: 7, name: "Tata", products: [] },
 ];

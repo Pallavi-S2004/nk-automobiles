@@ -14,7 +14,9 @@ export default function Home() {
   const [status, setStatus] = useState<string | null>(null);
 
   // Handle input changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
@@ -80,50 +82,29 @@ export default function Home() {
             Spare Parts by Brand
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Maruti */}
-            <Link href="/brands/maruti">
-              <div className="border rounded-lg shadow p-6 text-center hover:shadow-lg transition cursor-pointer">
-                <img
-                  src="/logos/maruti.png"
-                  alt="Maruti Suzuki"
-                  className="h-20 mx-auto mb-4 object-contain"
-                />
-                <h3 className="text-xl font-semibold mb-2">Maruti Suzuki</h3>
-                <p className="text-gray-600">
-                  Browse genuine Maruti Suzuki spare parts.
-                </p>
-              </div>
-            </Link>
-
-            {/* Hyundai */}
-            <Link href="/brands/hyundai">
-              <div className="border rounded-lg shadow p-6 text-center hover:shadow-lg transition cursor-pointer">
-                <img
-                  src="/logos/hyundai.png"
-                  alt="Hyundai"
-                  className="h-20 mx-auto mb-4 object-contain"
-                />
-                <h3 className="text-xl font-semibold mb-2">Hyundai</h3>
-                <p className="text-gray-600">
-                  Browse genuine Hyundai spare parts.
-                </p>
-              </div>
-            </Link>
-
-            {/* Toyota */}
-            <Link href="/brands/toyota">
-              <div className="border rounded-lg shadow p-6 text-center hover:shadow-lg transition cursor-pointer">
-                <img
-                  src="/logos/toyota.png"
-                  alt="Toyota"
-                  className="h-20 mx-auto mb-4 object-contain"
-                />
-                <h3 className="text-xl font-semibold mb-2">Toyota</h3>
-                <p className="text-gray-600">
-                  Browse genuine Toyota spare parts.
-                </p>
-              </div>
-            </Link>
+            {[
+              { name: "Maruti Suzuki", slug: "maruti", logo: "/logos/maruti.png" },
+              { name: "Hyundai", slug: "hyundai", logo: "/logos/hyundai.png" },
+              { name: "Toyota", slug: "toyota", logo: "/logos/toyota.png" },
+              { name: "Benz", slug: "benz", logo: "/logos/benz.png" },
+              { name: "BMW", slug: "bmw", logo: "/logos/bmw.png" },
+              { name: "Audi", slug: "audi", logo: "/logos/audi.png" },
+              { name: "Tata", slug: "tata", logo: "/logos/tata.png" },
+            ].map((brand) => (
+              <Link key={brand.slug} href={`/brands/${brand.slug}`}>
+                <div className="border rounded-lg shadow p-6 text-center hover:shadow-lg transition cursor-pointer">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-20 mx-auto mb-4 object-contain"
+                  />
+                  <h3 className="text-xl font-semibold mb-2">{brand.name}</h3>
+                  <p className="text-gray-600">
+                    Browse genuine {brand.name} spare parts.
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
